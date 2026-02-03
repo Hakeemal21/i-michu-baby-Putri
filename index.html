@@ -1,162 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Miss You 🤍</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Miss You</title>
 
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #fde2e4, #fadadd, #fff1f2);
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-.container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    background: #ffffffcc;
-    backdrop-filter: blur(10px);
-    padding: 24px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 360px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-h1 {
-    color: #e75480;
-    margin-bottom: 12px;
-}
-
-#text {
-    color: #555;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 120px;
-    margin-bottom: 18px;
-    white-space: pre-wrap;
-}
-
-.photos {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 18px;
-}
-
-.photos img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-.music-btn {
-    background: #f8b6c1;
-    border: none;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.music-btn:hover {
-    background: #f497b6;
-}
-
-/* HEART CONFETTI */
-.heart {
-    position: fixed;
-    top: -10px;
-    font-size: 14px;
-    color: #f4a7b9;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #F6E7DC; /* Beige / Nude */
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
     }
-}
-</style>
-</head>
 
+    .container {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #FF4F8B; /* Vibrant pink */
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 200px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .letter-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .music-btn {
+      margin-top: 25px;
+      font-size: 1rem;
+      color: #FF4F8B;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Falling hearts */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      color: #FF4F8B;
+      animation: fall linear forwards;
+      z-index: 1;
+      opacity: 0.85;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<div class="container">
-    <div class="card">
-        <h1>I Miss You 🤍</h1>
+  <div class="container">
+    <h1>I MISS YOU</h1>
 
-        <div id="text"></div>
-
-        <div class="photos">
-            <img src="https://i.imgur.com/kBQkMt2.jpeg">
-            <img src="https://i.imgur.com/Gw7aGVv.jpeg">
-            <img src="https://i.imgur.com/xCQm4Ex.jpeg">
-        </div>
-
-        <button class="music-btn" onclick="playMusic()">Tap for music 🎵</button>
+    <div class="photos">
+      <img src="https://i.imgur.com/kBQkMt2.jpeg">
+      <img src="https://i.imgur.com/Gw7aGVv.jpeg">
+      <img src="https://i.imgur.com/xCQm4Ex.jpeg">
     </div>
-</div>
 
-<!-- YouTube Player -->
-<iframe id="ytplayer" width="0" height="0"
-src="https://www.youtube.com/embed/TWPfoslBR8k?autoplay=0&mute=0"
-frameborder="0"
-allow="autoplay">
-</iframe>
+    <div class="letter-box" id="letter"></div>
 
-<script>
-/* TYPEWRITER TEXT */
-const message = `Babyyyyy , sayang rindu sangat .
-Michu so soooo much babyyyyy .
-Nak babyyy , peluk sayang pleasee .
-Nak babyyy jeee , kita berdua jeeee .
-Maka tenang kita di sini berdua , Haa .
-Hehe .
-Semoga Hakeem and Putri bergema sampai selamanya !! 🤍`;
+    <div class="music-btn" id="playMusic">
+      tekan sini untuk lagu hehe 💕
+    </div>
+  </div>
 
-let index = 0;
-function typeText() {
-    if (index < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(index);
-        index++;
-        setTimeout(typeText, 45);
+  <!-- Background Music -->
+  <audio id="bg-music" loop muted>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Typewriter text
+    const text = `Babyyyyy, sayang rindu sangat 💕
+Michu so soooo much babyyyyy.
+Nak babyyy, peluk sayang pleasee.
+Nak babyyy jeee, kita berdua jeeee.
+Maka tenang kita di sini berdua, Haa. Hehe.
+Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
+
+    let i = 0;
+    const speed = 40;
+    const letterBox = document.getElementById("letter");
+
+    function typeText() {
+      if (i < text.length) {
+        letterBox.innerHTML += text.charAt(i).replace(/\n/g, "<br>");
+        i++;
+        setTimeout(typeText, speed);
+      }
     }
-}
-typeText();
+    typeText();
 
-/* MUSIC */
-function playMusic() {
-    const iframe = document.getElementById("ytplayer");
-    iframe.src = iframe.src.replace("autoplay=0", "autoplay=1");
-}
+    // Hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
 
-/* HEART CONFETTI */
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "🤍";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-    document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 280);
 
-    setTimeout(() => heart.remove(), 6000);
-}
-setInterval(createHeart, 300);
-</script>
+    // Music play (Android-safe)
+    const music = document.getElementById("bg-music");
+    document.getElementById("playMusic").addEventListener("click", () => {
+      music.muted = false;
+      music.play();
+    }, { once: true });
+  </script>
 
 </body>
 </html>
