@@ -12,7 +12,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #F6E7DC; /* Beige / Nude */
+      background: #F6E7DC;
       font-family: 'Poppins', sans-serif;
       display: flex;
       align-items: center;
@@ -30,7 +30,7 @@
 
     h1 {
       font-family: 'Pacifico', cursive;
-      color: #FF4F8B; /* Vibrant pink */
+      color: #FF4F8B;
       font-size: 3rem;
       margin-bottom: 20px;
     }
@@ -60,12 +60,21 @@
       line-height: 1.7;
     }
 
+    /* MUSIC BUTTON */
     .music-btn {
-      margin-top: 25px;
-      font-size: 1rem;
-      color: #FF4F8B;
+      margin: 30px auto 0;
+      width: 70px;
+      height: 70px;
+      background: #FF4F8B;
+      color: white;
+      font-size: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      text-decoration: underline;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      user-select: none;
     }
 
     /* Falling hearts */
@@ -100,9 +109,8 @@
 
     <div class="letter-box" id="letter"></div>
 
-    <div class="music-btn" id="playMusic">
-      tekan sini untuk lagu hehe 💕
-    </div>
+    <!-- MUSIC ICON BUTTON -->
+    <div class="music-btn" id="playMusic">🎵</div>
   </div>
 
   <!-- Background Music -->
@@ -132,7 +140,7 @@ Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
     }
     typeText();
 
-    // Hearts generator
+    // Hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -140,17 +148,16 @@ Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = (3 + Math.random() * 3) + "s";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     }
     setInterval(createHeart, 280);
 
-    // Music play (Android-safe)
+    // Music play
     const music = document.getElementById("bg-music");
     document.getElementById("playMusic").addEventListener("click", () => {
       music.muted = false;
       music.play();
-    }, { once: true });
+    });
   </script>
 
 </body>
