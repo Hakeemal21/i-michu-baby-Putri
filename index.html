@@ -45,6 +45,7 @@
 
     .photos img {
       width: 200px;
+      height: auto;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
@@ -60,21 +61,12 @@
       line-height: 1.7;
     }
 
-    /* MUSIC BUTTON */
     .music-btn {
-      margin: 30px auto 0;
-      width: 70px;
-      height: 70px;
-      background: #FF4F8B;
-      color: white;
-      font-size: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin-top: 25px;
+      font-size: 1rem;
+      color: #FF4F8B;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      user-select: none;
+      text-decoration: underline;
     }
 
     /* Falling hearts */
@@ -85,7 +77,7 @@
       color: #FF4F8B;
       animation: fall linear forwards;
       z-index: 1;
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
     @keyframes fall {
@@ -109,22 +101,23 @@
 
     <div class="letter-box" id="letter"></div>
 
-    <!-- MUSIC ICON BUTTON -->
-    <div class="music-btn" id="playMusic">🎵</div>
+    <div class="music-btn" id="playMusic">
+      tekan sini untuk lagu hehe 💕
+    </div>
   </div>
 
-  <!-- Background Music -->
+  <!-- Music -->
   <audio id="bg-music" loop muted>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     // Typewriter text
-    const text = `Babyyyyy, sayang rindu sangat 💕
-Michu so soooo much babyyyyy.
-Nak babyyy, peluk sayang pleasee.
-Nak babyyy jeee, kita berdua jeeee.
-Maka tenang kita di sini berdua, Haa. Hehe.
+    const text = `Babyyyyy, sayang rindu sangat 💕  
+Michu so soooo much babyyyyy.  
+Nak babyyy, peluk sayang pleasee.  
+Nak babyyy jeee, kita berdua jeeee.  
+Maka tenang kita di sini berdua, Haa. Hehe.  
 Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
 
     let i = 0;
@@ -140,7 +133,7 @@ Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
     }
     typeText();
 
-    // Hearts
+    // Hearts generator
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -148,20 +141,24 @@ Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = (3 + Math.random() * 3) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
     }
-    setInterval(createHeart, 280);
+    setInterval(createHeart, 300);
 
     // Music play
     const music = document.getElementById("bg-music");
     document.getElementById("playMusic").addEventListener("click", () => {
       music.muted = false;
       music.play();
-    });
+    }, { once: true });
   </script>
 
 </body>
 </html>
+
 
 
 
