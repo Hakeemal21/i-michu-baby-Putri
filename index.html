@@ -2,101 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I Miss You</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f3e7d8; /* beige / nude */
       min-height: 100vh;
-      background: #F6E7DC;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow-x: hidden;
+      font-family: 'Dancing Script', cursive;
     }
 
     .container {
-      text-align: center;
-      padding: 20px;
-      position: relative;
-      z-index: 2;
       max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
     }
 
     h1 {
-      font-family: 'Pacifico', cursive;
-      color: #FF4F8B;
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: #ff4f8b; /* vibrant pink */
+      margin-bottom: 30px;
     }
 
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      color: #ff4f8b;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* Photos */
     .photos {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       margin-bottom: 30px;
       flex-wrap: wrap;
     }
 
     .photos img {
       width: 200px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-radius: 14px;
     }
 
+    /* Letter box */
     .letter-box {
       background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      padding: 28px;
+      border-radius: 16px;
       max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.7;
+      margin: 0 auto 30px;
+      font-size: 22px;
+      line-height: 1.9;
+      min-height: 200px;
     }
 
-    /* MUSIC BUTTON */
+    /* Music button */
     .music-btn {
-      margin: 30px auto 0;
-      width: 70px;
-      height: 70px;
-      background: #FF4F8B;
-      color: white;
-      font-size: 30px;
+      width: 64px;
+      height: 64px;
+      background: #f3e7d8; /* beige */
+      border: 2px solid #ff4f8b;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #ff4f8b; /* pink icon */
+      font-size: 26px;
+      margin: 0 auto;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       user-select: none;
-    }
-
-    /* Falling hearts */
-    .heart {
-      position: fixed;
-      top: -10px;
-      font-size: 20px;
-      color: #FF4F8B;
-      animation: fall linear forwards;
-      z-index: 1;
-      opacity: 0.85;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh);
-        opacity: 0;
-      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Floating hearts -->
+  <script>
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 12 + 14 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  </script>
 
   <div class="container">
     <h1>I MISS YOU</h1>
@@ -104,64 +120,52 @@
     <div class="photos">
       <img src="https://i.imgur.com/kBQkMt2.jpeg">
       <img src="https://i.imgur.com/Gw7aGVv.jpeg">
-      <img src="https://i.imgur.com/xCQm4Ex.jpeg">
+      <img src="https://i.imgur.com/xCQM4Ex.jpeg">
     </div>
 
     <div class="letter-box" id="letter"></div>
 
-    <!-- MUSIC ICON BUTTON -->
+    <!-- Music Button -->
     <div class="music-btn" id="playMusic">🎵</div>
   </div>
 
-  <!-- Background Music -->
-  <audio id="bg-music" loop muted>
+  <!-- Audio -->
+  <audio id="bg-music" loop preload="auto">
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     // Typewriter text
-    const text = `Babyyyyy, sayang rindu sangat 💕
-Michu so soooo much babyyyyy.
+    const text = `Babyyyy, sayang rindu sangat 💗
+Michu so sooo much babyyyy.
 Nak babyyy, peluk sayang pleasee.
 Nak babyyy jeee, kita berdua jeeee.
 Maka tenang kita di sini berdua, Haa. Hehe.
-Semoga Hakeem and Putri bergema sampai selamanya!! 💖`;
+Semoga Hakeem dan Putri bergema sampai selamanya!! 💖`;
 
+    const box = document.getElementById("letter");
     let i = 0;
-    const speed = 40;
-    const letterBox = document.getElementById("letter");
 
     function typeText() {
       if (i < text.length) {
-        letterBox.innerHTML += text.charAt(i).replace(/\n/g, "<br>");
+        box.innerHTML += text[i] === "\n" ? "<br>" : text[i];
         i++;
-        setTimeout(typeText, speed);
+        setTimeout(typeText, 45);
       }
     }
     typeText();
 
-    // Hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 280);
-
-    // Music play
+    // Music (iOS + Android safe)
     const music = document.getElementById("bg-music");
     document.getElementById("playMusic").addEventListener("click", () => {
-      music.muted = false;
+      music.volume = 0.8;
       music.play();
     });
   </script>
 
 </body>
 </html>
+
 
 
 
